@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping List</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .shopping-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <h2>Shopping List</h2>
+    <form id="shoppingForm" class="d-flex mb-3">
+      <input type="text" class="form-control me-2" id="itemInput" placeholder="Add item" required>
+      <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+    <ol class="list-group" id="shoppingList"></ol>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
+
