@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Workflow</title>
+    <script>
+        // Function to simulate placing the order
+        function placeOrder(order, callback) {
+            console.log(`Placing order for: ${order}`);
+            setTimeout(() => {
+                console.log(`Order for ${order} has been placed.`);
+                callback(order);
+            }, 2000);
+        }
+
+        // Function to simulate preparing the order
+        function prepareOrder(order, callback) {
+            console.log(`Preparing: ${order}`);
+            setTimeout(() => {
+                console.log(`${order} is ready.`);
+                callback(order);
+            }, 3000);
+        }
+
+        // Function to simulate packaging the order
+        function packageOrder(order, callback) {
+            console.log(`Packaging: ${order}`);
+            setTimeout(() => {
+                console.log(`${order} has been packaged.`);
+                callback(order);
+            }, 2000);
+        }
+
+        // Function to simulate delivering the order
+        function deliverOrder(order, callback) {
+            console.log(`Delivering: ${order}`);
+            setTimeout(() => {
+                console.log(`${order} has been delivered.`);
+                callback();
+            }, 4000);
+        }
+
+        // Function to process the order sequentially
+        function processOrder(order) {
+            placeOrder(order, (order) => {
+                prepareOrder(order, (order) => {
+                    packageOrder(order, (order) => {
+                        deliverOrder(order, () => {
+                            console.log("Order process completed successfully.");
+                        });
+                    });
+                });
+            });
+        }
+
+        // Test the workflow
+        document.addEventListener('DOMContentLoaded', () => {
+            const order = "Burger Combo Meal";
+            processOrder(order);
+        });
+    </script>
+</head>
+<body>
+    <h1>Order Workflow Simulation</h1>
+    <p>Open the console to see the workflow logs.</p>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            text-align: center;
+        }
+        input {
+            margin: 10px 0;
+            padding: 8px;
+            width: 90%;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BMI Calculator</h1>
+        <p>Enter your weight (kg) and height (m):</p>
+        <input type="text" id="weight" placeholder="Weight in kg">
+        <input type="text" id="height" placeholder="Height in meters">
+        <button onclick="calculateBMI()">Calculate BMI</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateBMI() {
+            const weightInput = document.getElementById("weight").value;
+            const heightInput = document.getElementById("height").value;
+            const resultDiv = document.getElementById("result");
+
+            try {
+                const weight = parseFloat(weightInput);
+                const height = parseFloat(heightInput);
+
+                if (isNaN(weight) || isNaN(height)) {
+                    throw "Both weight and height must be numbers.";
+                }
+                if (weight <= 0 || height <= 0) {
+                    throw "Weight and height must be greater than zero.";
+                }
+
+                const bmi = weight / (height * height);
+                resultDiv.textContent = `Your BMI is ${bmi.toFixed(2)}.`;
+                resultDiv.style.color = "black";
+
+            } catch (error) {
+                resultDiv.textContent = `Error: ${error}`;
+                resultDiv.style.color = "red";
+            }
+        }
+    </script>
+</body>
+</html>
