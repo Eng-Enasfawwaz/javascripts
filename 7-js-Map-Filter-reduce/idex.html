@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Map, Filter, and Reduce</title>
+</head>
+<body>
+    <h1>JavaScript Map, Filter, and Reduce Examples</h1>
+    <script>
+        // 1. Clean Names
+        function cleanNames(names) {
+            return names.map(name => name.trim());
+        }
+        console.log(cleanNames([" injustice", "  SuperMan", "Batman  ", " flash  "]));
+
+        // 2. Convert miles to kilometers and calculate total distance
+        const miles = [10, 20, 30, 40];
+        const toKm = miles.map(mile => mile * 1.60934);
+        const totalDistanceInKilometers = toKm.reduce((sum, km) => sum + km, 0);
+        console.log(toKm);
+        console.log(totalDistanceInKilometers);
+
+        // 3. Square and average
+        const numbers = [1, 2, 3, 4, 5];
+        const squared = numbers.map(num => num ** 2);
+        const average = squared.reduce((sum, num) => sum + num, 0) / numbers.length;
+        console.log(average);
+
+        // 4. Add 4 to each element
+        const plus4 = numbers.map(num => num + 4);
+        console.log(plus4);
+
+        // 5. Even double even numbers and sum
+        const numArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const evenDoubleEven = numArray.filter(num => num % 2 === 0).map(num => num * 2).reduce((sum, num) => sum + num, 0);
+        console.log(evenDoubleEven);
+
+        // 6. Uppercase words
+        const words = ['apple', 'banana', 'cherry', 'date'];
+        const upperCaseWords = words.map(word => word.toUpperCase());
+        console.log(upperCaseWords);
+
+        // 7. Modify heroes array
+        const heros = [
+            { name: 'Iron Man', power: 'Tech' },
+            { name: 'Spider-Man', power: 'Spider abilities' },
+            { name: 'Thor', power: 'Godly powers' },
+            { name: 'Hulk', power: 'Super strength' }
+        ];
+        const newHeros = heros.map((hero, index) => ({
+            hero: hero.name,
+            power: hero.power,
+            id: index
+        }));
+        console.log(newHeros);
+
+        // 8. Filter words with more than 7 characters
+        const inputWords = ["spray", "limit", "elite", "exuberant", "destruction", "present"];
+        const longWords = inputWords.filter(word => word.length > 7);
+        console.log(longWords);
+
+        // 9. Filter, map, reduce complex example
+        const nums = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+        const oddNumbers = nums.filter(num => num % 2 !== 0);
+        const divisibleBy2or5 = nums.filter(num => num % 2 === 0 || num % 5 === 0);
+        const divisibleBy3Squared = nums.filter(num => num % 3 === 0).map(num => num ** 2);
+        const sumSquaredDivisibleBy5 = nums.filter(num => num % 5 === 0).map(num => num ** 2).reduce((sum, num) => sum + num, 0);
+        console.log(oddNumbers);
+        console.log(divisibleBy2or5);
+        console.log(divisibleBy3Squared);
+        console.log(sumSquaredDivisibleBy5);
+
+        // 10. Squared even numbers and sum of array elements
+        let numsArray = [11, 22, 33, 46, 75, 86, 97, 98];
+        const squaredEvenNums = numsArray.filter(num => num % 2 === 0).map(num => num ** 2);
+        const sum = numsArray.reduce((sum, num) => sum + num, 0);
+        console.log(`squaredEvenNums: ${squaredEvenNums}`);
+        console.log(`Sum of array elements: ${sum}`);
+
+        // 11. Countries filter, map, and reduce
+        let countries = ['India', 'United States', 'Russia', 'Japan', 'China'];
+        const filteredCountries = countries.filter(country => !country.startsWith('U') && !country.startsWith('R'));
+        const upperCaseCountries = filteredCountries.map(country => country.toUpperCase());
+        const totalCharacters = upperCaseCountries.reduce((sum, country) => sum + country.length, 0);
+        console.log(filteredCountries);
+        console.log(upperCaseCountries);
+        console.log(totalCharacters);
+
+        // 12. Numbers greater than 50
+        const numsGreaterThan50 = [12, 45, 67, 89, 23, 56, 73, 99, 100].filter(num => num > 50);
+        console.log(numsGreaterThan50);
+    </script>
+</body>
+</html>
